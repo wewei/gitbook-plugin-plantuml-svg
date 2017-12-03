@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Wei Wei",
+      "authorEmail": "shazhouke@gmail.com",
+      "authorUrl": "https://github.com/wewei"
+    }
+  }
+}

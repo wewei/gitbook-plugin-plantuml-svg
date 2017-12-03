@@ -1,0 +1,86 @@
+{
+  "name": "gitbook-plugin-plantuml-svg",
+  "version": "0.0.0",
+  "description": "Inject PlantUML into gitbook as SVG",
+  "homepage": "https://github.com/wewei/gitbook-plugin-plantuml-svg",
+  "author": {
+    "name": "Wei Wei",
+    "email": "shazhouke@gmail.com",
+    "url": "https://github.com/wewei"
+  },
+  "files": ["lib"],
+  "main": "lib/index.js",
+  "keywords": [
+    "GitBook",
+    "PlantUML",
+    "SVG",
+    "GitBook plugin",
+    "UML",
+    "Markdown"
+  ],
+  "engines": {
+    "gitbook": ">=2.0.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^2.13.1",
+    "eslint": "^4.1.0",
+    "eslint-config-prettier": "^2.4.0",
+    "eslint-config-xo": "^0.18.2",
+    "eslint-plugin-prettier": "^2.2.0",
+    "fs-extra": "^4.0.2",
+    "husky": "^0.14.3",
+    "jest": "^21.0.0",
+    "jest-cli": "^21.0.0",
+    "lint-staged": "^4.2.1",
+    "nsp": "^2.6.3",
+    "prettier": "^1.7.0",
+    "sinon": "^4.1.2",
+    "sinon-chai": "^2.14.0"
+  },
+  "scripts": {
+    "prepublish": "nsp check",
+    "pretest": "eslint .",
+    "precommit": "lint-staged",
+    "test": "jest"
+  },
+  "lint-staged": {
+    "*.js": ["eslint --fix", "git add"],
+    "*.json": ["prettier --write", "git add"]
+  },
+  "eslintConfig": {
+    "extends": ["xo", "prettier"],
+    "env": {
+      "jest": true,
+      "node": true
+    },
+    "rules": {
+      "new-cap": [
+        "error",
+        {
+          "capIsNewExceptionPattern": "[A-Z]+(_[A-Z]+)*"
+        }
+      ],
+      "prettier/prettier": [
+        "error",
+        {
+          "singleQuote": true,
+          "trailingComma": "es5",
+          "printWidth": 90
+        }
+      ]
+    },
+    "plugins": ["prettier"]
+  },
+  "repository": "https://github.com/wewei/gitbook-plugin-plantuml-svg.git",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "js-base64": "^2.4.0",
+    "lodash": "^4.17.4",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
