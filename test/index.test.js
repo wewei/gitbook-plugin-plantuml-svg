@@ -4,8 +4,8 @@ const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 const fs = require('fs-extra');
 
-const plugin = require('../index.js');
-const { SERVICE_URL, OUTPUT_TEMPLATE } = require('../constants');
+const plugin = require('../src/index.js');
+const { SERVICE_URL, OUTPUT_TEMPLATE } = require('../src/constants');
 
 chai.use(sinonChai);
 const { expect } = chai;
