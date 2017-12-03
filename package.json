@@ -74,7 +74,8 @@
   },
   "repository": "https://github.com/wewei/gitbook-plugin-plantuml-svg.git",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "collectCoverage": true
   },
   "license": "MIT",
   "dependencies": {
