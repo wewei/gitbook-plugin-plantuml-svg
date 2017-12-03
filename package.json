@@ -1,6 +1,6 @@
 {
   "name": "gitbook-plugin-plantuml-svg",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.1",
   "description": "Inject PlantUML into gitbook as SVG",
   "homepage": "https://github.com/wewei/gitbook-plugin-plantuml-svg",
   "author": {
