@@ -14,6 +14,11 @@ function getContentPath(kwargs) {
   return path.relative(this.resolve('.'), absPath);
 }
 
+function getConfig(context, property, defaultValue) {
+  const config = context.config ? /* 3.x */ context.config : /* 2.x */ context.book.config;
+  return config.get(property, defaultValue);
+}
+
 function loadUmlContent({ kwargs = {}, body } = {}) {
   if (kwargs.src) {
     return this.readFileAsString(getContentPath.call(this, kwargs));
@@ -34,7 +39,11 @@ function trimContent(content) {
 function renderUml(content) {
   return (this.rpMock || rp)
     .post({
-      url: SERVICE_URL,
+      url: getConfig(this, 'pluginsConfig.plantuml-svg.serviceUrl', SERVICE_URL),
+      qs: {
+        config: getConfig(this, 'pluginsConfig.plantuml-svg.config', [])
+      },
+      useQuerystring: true,
       body: content,
     })
     .then(Base64.encode)
