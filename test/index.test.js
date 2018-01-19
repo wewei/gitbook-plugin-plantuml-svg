@@ -52,6 +52,35 @@ describe('GitBook PlantUML Plugin', () => {
     });
   });
 
+  it('should load the inline UML correctly with plugin config', async () => {
+    const customService = 'http://localhost/svg';
+    const customConfig = [
+      'skinparam defaultFontName Arial',
+      'skinparam defaultFontSize 14',
+    ];
+    mock.config = {
+      get(property) {
+        if (property === 'pluginsConfig.plantuml-svg.serviceUrl') {
+          return customService;
+        }
+        return customConfig;
+      },
+    };
+
+    const data = await plugin.blocks.uml.process.call(mock, {
+      body: UML_CONTENT,
+    });
+
+    expect(data).to.equal(OUTPUT_TEMPLATE(RESULT_BASE64));
+    expect(mock.readFileAsString).has.not.been.called;
+    expect(mock.rpMock.post).has.been.calledOnce.calledWith({
+      url: customService,
+      qs: { config: customConfig },
+      useQuerystring: true,
+      body: UML_CONTENT.trim(),
+    });
+  });
+
   it('should throw if the PlantUML block is not found', async () => {
     let error = null;
 
